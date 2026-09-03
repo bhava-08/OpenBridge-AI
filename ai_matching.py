@@ -44,3 +44,18 @@ print("Required Skills:")
 
 for skill in result["required_skills"]:
     print("-", skill)
+    # Match contributors with required skills
+
+from contributors import contributors
+
+print("\n--- Recommended Contributors ---")
+
+for person in contributors:
+    matched_skills = set(result["required_skills"]) & set(person["skills"])
+
+    if matched_skills:
+        score = len(matched_skills)
+
+        print("\nName:", person["name"])
+        print("Matching Skills:", ", ".join(matched_skills))
+        print("Match Score:", score)
